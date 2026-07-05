@@ -1,0 +1,41 @@
+{
+  "name": "booking-com-skills",
+  "version": "1.0.0",
+  "description": "Agent skills for Booking.com data (search, availability, prices, cross-OTA comparison, reviews) via ScoutingAPI.",
+  "author": "ScoutingAPI",
+  "homepage": "https://scoutingapi.com",
+  "repository": "https://github.com/scoutingapi/booking-com-skills",
+  "license": "MIT-0",
+  "skills": [
+    {
+      "name": "booking-com-search",
+      "path": "skills/booking-com-search",
+      "description": "Search live Booking.com stays by location, dates and occupancy, returned in one unified schema alongside every other booking platform. Use when a user wants to find Booking.com listings. Powered by the ScoutingAPI REST API / MCP server."
+    },
+    {
+      "name": "booking-com-availability",
+      "path": "skills/booking-com-availability",
+      "description": "Check day-by-day Booking.com availability (the booking calendar) for a known listing over a date window. Use when a user asks whether a Booking.com place is open on specific dates. Powered by ScoutingAPI."
+    },
+    {
+      "name": "booking-com-reviews",
+      "path": "skills/booking-com-reviews",
+      "description": "Read normalized Booking.com reviews for a listing, with native rating scales preserved. Use when a user wants ratings or guest feedback for a Booking.com place. Powered by ScoutingAPI."
+    },
+    {
+      "name": "booking-com-prices",
+      "path": "skills/booking-com-prices",
+      "description": "Get a real Booking.com price quote for a listing and dates, and compare that property across booking platforms for the cheapest rate. Use for \"how much is this Booking.com place\" or \"is it cheaper elsewhere\". Powered by ScoutingAPI."
+    },
+    {
+      "name": "booking-com-full",
+      "path": "skills/booking-com-full",
+      "description": "Complete Booking.com toolkit — search, availability, listing detail, price, cross-OTA price comparison and reviews, all in one unified schema. Install this when an agent needs broad Booking.com coverage. Powered by ScoutingAPI."
+    },
+    {
+      "name": "booking-com-hotels",
+      "path": "skills/booking-com-hotels",
+      "description": "Search Booking.com hotels by location, dates and occupancy in one unified schema, with cross-OTA price comparison. Use for hotel discovery on Booking.com. Powered by ScoutingAPI."
+    }
+  ]
+}
