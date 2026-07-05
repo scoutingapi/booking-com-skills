@@ -1,6 +1,6 @@
 ---
 name: booking-com-availability
-description: "Check day-by-day Booking.com availability (the booking calendar) for a known listing over a date window. Use when a user asks whether a Booking.com place is open on specific dates. Powered by ScoutingAPI."
+description: "Check day-by-day Booking.com availability (the booking calendar) for a known listing over a date window. Use when a user asks whether a listing on Booking.com is open on specific dates. Powered by ScoutingAPI."
 version: "1.0.0"
 license: MIT-0
 author: ScoutingAPI

@@ -15,12 +15,12 @@
     {
       "name": "booking-com-availability",
       "path": "skills/booking-com-availability",
-      "description": "Check day-by-day Booking.com availability (the booking calendar) for a known listing over a date window. Use when a user asks whether a Booking.com place is open on specific dates. Powered by ScoutingAPI."
+      "description": "Check day-by-day Booking.com availability (the booking calendar) for a known listing over a date window. Use when a user asks whether a listing on Booking.com is open on specific dates. Powered by ScoutingAPI."
     },
     {
       "name": "booking-com-reviews",
       "path": "skills/booking-com-reviews",
-      "description": "Read normalized Booking.com reviews for a listing, with native rating scales preserved. Use when a user wants ratings or guest feedback for a Booking.com place. Powered by ScoutingAPI."
+      "description": "Read normalized Booking.com reviews for a listing, with native rating scales preserved. Use when a user wants ratings or guest feedback for a listing on Booking.com. Powered by ScoutingAPI."
     },
     {
       "name": "booking-com-prices",

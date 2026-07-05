@@ -1,6 +1,6 @@
 ---
 name: booking-com-reviews
-description: "Read normalized Booking.com reviews for a listing, with native rating scales preserved. Use when a user wants ratings or guest feedback for a Booking.com place. Powered by ScoutingAPI."
+description: "Read normalized Booking.com reviews for a listing, with native rating scales preserved. Use when a user wants ratings or guest feedback for a listing on Booking.com. Powered by ScoutingAPI."
 version: "1.0.0"
 license: MIT-0
 author: ScoutingAPI
