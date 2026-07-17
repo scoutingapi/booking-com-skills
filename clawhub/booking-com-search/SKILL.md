@@ -65,7 +65,7 @@ Key parameters:
 
 ## MCP (no key pasted into the agent)
 
-On an MCP-capable runtime, connect `https://mcp.scoutingapi.com` (OAuth 2.1 + PKCE) and use: `search_stays`.
+On an MCP-capable runtime, connect `https://mcp.scoutingapi.com/mcp` (OAuth 2.1 + PKCE) and use: `search_stays`.
 
 ## The cross-OTA advantage
 

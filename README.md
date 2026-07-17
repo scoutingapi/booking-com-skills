@@ -62,7 +62,7 @@ One integration covers every platform: Booking.com data comes back in the same u
 ## Source
 
 - API reference: <https://api.scoutingapi.com/openapi.json>
-- Hosted MCP server: <https://mcp.scoutingapi.com>
+- Hosted MCP server: <https://mcp.scoutingapi.com/mcp>
 - Docs: <https://scoutingapi.com/docs>
 
 ---
