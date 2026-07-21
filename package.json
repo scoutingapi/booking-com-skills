@@ -1,16 +1,16 @@
 {
   "name": "booking-com-skills",
   "version": "1.0.0",
-  "description": "Agent skills for Booking.com data via ScoutingAPI.",
-  "homepage": "https://github.com/scoutingapi/booking-com-skills",
+  "description": "Agent skills for Booking.com data via StayingAPI.",
+  "homepage": "https://github.com/stayingapi/booking-com-skills",
   "repository": {
     "type": "git",
-    "url": "https://github.com/scoutingapi/booking-com-skills.git"
+    "url": "https://github.com/stayingapi/booking-com-skills.git"
   },
   "bugs": {
-    "url": "https://github.com/scoutingapi/booking-com-skills/issues"
+    "url": "https://github.com/stayingapi/booking-com-skills/issues"
   },
-  "author": "ScoutingAPI",
+  "author": "StayingAPI",
   "license": "MIT-0",
   "keywords": [
     "booking-com",
