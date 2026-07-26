@@ -76,11 +76,11 @@ Full normalized detail for one listing: amenities (canonical taxonomy), photos, 
 
 Key parameters:
 - `platform` — vrbo | booking | airbnb | google.
-- `id` — Platform-native listing id (case-sensitive, verbatim from source).
+- `id` — Platform-native listing id (case-sensitive, verbatim from source). A bare booking.com slug needs a country — without one it returns 400 needs_country (booking slugs are not globally unique).
+- `country` — ISO-3166 alpha-2 (booking). Disambiguates a bare booking slug without the %2F-encoded /hotel/{cc}/{slug} id — e.g. ?country=co.
 - `checkIn` — Pairs with checkOut; presence embeds a best-effort live price (may be null; the call still bills).
 - `checkOut` — Must be after checkIn.
 - `adults` — ≥ 1 (only used with dates).
-- `children` — ≥ 0.
 
 ### `GET /v1/price`
 
