@@ -17,7 +17,7 @@ tags: ["booking-com", "hotels", "hotel-search", "price-comparison", "travel"]
 metadata: {"openclaw":{"emoji":"🏨","requires":{"env":["STAYINGAPI_KEY"]},"primaryEnv":"STAYINGAPI_KEY","homepage":"https://stayingapi.com"},"hermes":{"tags":["booking-com","hotels","hotel-search","price-comparison","travel"],"category":"integrations"}}
 ---
 
-# Booking.com hotels
+# Booking.com Hotels
 
 Hotel discovery on Booking.com — search live hotel stays in the unified schema, with cross-OTA price comparison built in.
 

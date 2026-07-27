@@ -17,7 +17,7 @@ tags: ["booking-com", "booking-com-api", "reviews", "ratings", "travel", "accomm
 metadata: {"openclaw":{"emoji":"⭐","requires":{"env":["STAYINGAPI_KEY"]},"primaryEnv":"STAYINGAPI_KEY","homepage":"https://stayingapi.com"},"hermes":{"tags":["booking-com","booking-com-api","reviews","ratings","travel","accommodation"],"category":"integrations"}}
 ---
 
-# Booking.com reviews
+# Booking.com Reviews
 
 Read normalized Booking.com reviews for a listing — the same review shape across every platform.
 

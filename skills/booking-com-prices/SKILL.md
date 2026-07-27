@@ -17,7 +17,7 @@ tags: ["booking-com", "booking-com-api", "price", "price-comparison", "cross-ota
 metadata: {"openclaw":{"emoji":"💲","requires":{"env":["STAYINGAPI_KEY"]},"primaryEnv":"STAYINGAPI_KEY","homepage":"https://stayingapi.com"},"hermes":{"tags":["booking-com","booking-com-api","price","price-comparison","cross-ota","travel","accommodation"],"category":"integrations"}}
 ---
 
-# Booking.com prices & cross-OTA comparison
+# Booking.com Prices & Cross-OTA Comparison
 
 Get a real Booking.com price quote — then compare the same property against the offers StayingAPI resolves for it, with a computed min and median over those offers. Coverage varies by property: sometimes several OTA rates, sometimes a single aggregated-lowest rate.
 

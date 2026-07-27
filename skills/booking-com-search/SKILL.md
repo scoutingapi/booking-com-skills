@@ -17,7 +17,7 @@ tags: ["booking-com", "booking-com-api", "search", "vacation-rental", "travel", 
 metadata: {"openclaw":{"emoji":"🔍","requires":{"env":["STAYINGAPI_KEY"]},"primaryEnv":"STAYINGAPI_KEY","homepage":"https://stayingapi.com"},"hermes":{"tags":["booking-com","booking-com-api","search","vacation-rental","travel","accommodation"],"category":"integrations"}}
 ---
 
-# Booking.com search
+# Booking.com Search
 
 Search live Booking.com stays via [StayingAPI](https://stayingapi.com) — one call, the same unified schema you use for Airbnb, Booking.com, Vrbo and Google Hotels.
 

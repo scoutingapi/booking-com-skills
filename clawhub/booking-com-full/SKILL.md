@@ -17,7 +17,7 @@ tags: ["booking-com", "booking-com-api", "search", "availability", "reviews", "p
 metadata: {"openclaw":{"emoji":"🧰","requires":{"env":["STAYINGAPI_KEY"]},"primaryEnv":"STAYINGAPI_KEY","homepage":"https://stayingapi.com"},"hermes":{"tags":["booking-com","booking-com-api","search","availability","reviews","price-comparison","travel","accommodation"],"category":"integrations"}}
 ---
 
-# Booking.com — complete toolkit
+# Booking.com — Complete Toolkit
 
 The everything skill for Booking.com: search, availability, listing detail, price, cross-OTA price comparison and reviews — one key, one schema. Install the focused skills instead when you want a minimal tool surface.
 

@@ -17,7 +17,7 @@ tags: ["booking-com", "booking-com-api", "availability", "calendar", "travel", "
 metadata: {"openclaw":{"emoji":"📅","requires":{"env":["STAYINGAPI_KEY"]},"primaryEnv":"STAYINGAPI_KEY","homepage":"https://stayingapi.com"},"hermes":{"tags":["booking-com","booking-com-api","availability","calendar","travel","accommodation"],"category":"integrations"}}
 ---
 
-# Booking.com availability
+# Booking.com Availability
 
 Check day-by-day availability for a known Booking.com listing — the booking calendar over any date window.
 
