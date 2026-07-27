@@ -14,7 +14,7 @@ required_environment_variables:
     help: Free key at https://stayingapi.com/signup — no card. A stay_test_ sandbox key returns fixtures at zero cost.
     required_for: all API requests
 tags: ["booking-com", "hotels", "hotel-search", "price-comparison", "travel"]
-metadata: {"openclaw":{"emoji":"🏨","requires":{"env":["STAYINGAPI_KEY"]},"primaryEnv":"STAYINGAPI_KEY","homepage":"https://stayingapi.com"},"hermes":{"tags":["booking-com","hotels","hotel-search","price-comparison","travel"],"category":"travel"}}
+metadata: {"openclaw":{"emoji":"🏨","requires":{"env":["STAYINGAPI_KEY"]},"primaryEnv":"STAYINGAPI_KEY","homepage":"https://stayingapi.com"},"hermes":{"tags":["booking-com","hotels","hotel-search","price-comparison","travel"],"category":"integrations"}}
 ---
 
 # Booking.com hotels
@@ -52,23 +52,24 @@ Base URL: `https://api.stayingapi.com/v1`.
 Discover properties matching a location, dates, occupancy and filters across one or more platforms. Results from every requested platform are normalized to the same Property shape and merged into a single, cursor-paginated list. This is the breadth / funnel endpoint — and the clearest demonstration of "one schema, every platform".
 
 Key parameters:
-- `location` — Place name ("Split, HR") or "lat,lng". Required.
+- `location` — **Required.** Place name ("Split, HR") or "lat,lng".
 - `checkIn` — YYYY-MM-DD; required if checkOut given; not in the past.
 - `checkOut` — YYYY-MM-DD; required if checkIn given; must be after checkIn.
 - `adults` — ≥ 1.
 - `children` — ≥ 0.
 - `childAges[]` — Length must equal children. Coarsened for Vrbo/Airbnb.
+- `platforms[]` — Drives fan-out + per-platform billing.
 
 ### `GET /v1/price-compare`
 
-Compare the price of one property across booking platforms in a single call, resolved through the Google Hotels backbone. The response carries the offers plus StayingAPI-computed min and median as first-class fields, so you can read the cheapest and typical cross-OTA price without re-deriving them. No cross-platform short-term-rental price-comparison API exists elsewhere — this is the wedge.
+Rate-shop one property in a single call, resolved through the Google Hotels backbone. The response carries the offers the backbone exposes for that property plus StayingAPI-computed min and median over those offers as first-class fields, so you can read the cheapest rate without re-deriving it. Coverage varies by property: some resolve to several OTA offers, others to a single aggregated-lowest offer (then offers has one entry, min equals median, and the entry may be a direct-supplier rate rather than an OTA). Read offers.length before presenting a result as a multi-platform comparison — the schema does not guarantee more than one.
 
 Key parameters:
 - `name` — Property name to resolve.
 - `googleHotelId` — Precise Google Hotels id.
 - `location` — Disambiguating place / "lat,lng".
-- `checkIn` — YYYY-MM-DD; not in the past.
-- `checkOut` — Must be after checkIn.
+- `checkIn` — **Required.** YYYY-MM-DD; not in the past.
+- `checkOut` — **Required.** Must be after checkIn.
 - `adults` — ≥ 1.
 
 
@@ -78,13 +79,53 @@ Key parameters:
 
 On an MCP-capable runtime, connect `https://mcp.stayingapi.com/mcp` (OAuth 2.1 + PKCE) and use: `search_stays`, `compare_prices`.
 
+## Platform × endpoint support
+
+Not every endpoint supports every platform. Verified:
+
+| platform | search | availability | price | price-compare | listing | reviews |
+|---|---|---|---|---|---|---|
+| `airbnb` | yes | yes | yes | yes | yes | yes |
+| `booking` | yes | yes | yes | yes | yes | yes |
+| `vrbo` | yes | yes | yes | yes | yes | yes |
+| `google` | yes | yes | yes | yes | **no** | **no** |
+
+`GET /v1/listing/google/…` and `GET /v1/reviews?platform=google` return
+`400 platform_not_enabled` ("google is not enabled for this endpoint"). Use `booking`,
+`airbnb` or `vrbo` for listing detail and reviews; use `google` for search, price and
+cross-OTA price-compare.
+
 ## The cross-OTA advantage
 
-StayingAPI is **cross-platform**: Booking.com data comes back in the *same unified schema* as Airbnb, Booking.com, Vrbo and Google Hotels, and the price-compare tool returns a computed **min** and **median** across every OTA — something a single-platform wrapper can't do.
+StayingAPI is **cross-platform**: Booking.com data comes back in the *same unified schema* as Airbnb, Vrbo and Google Hotels, so one integration covers them all. `/v1/price-compare` resolves a property through the Google Hotels backbone and returns the offers it exposes plus a StayingAPI-computed **min** and **median** over those offers, as first-class fields.
+
+> Coverage varies by property and by what the backbone returns: some properties come back with several OTA offers, others with a single aggregated-lowest offer (in which case `min` equals `median` and `offers` has one entry, sometimes a direct-supplier rate rather than an OTA). Read `offers.length` before describing a result as a multi-platform comparison.
 
 ## Async & partial failures
 
-A live call that has to scrape returns `202` + a `jobId`; poll `GET /v1/jobs/{jobId}` (free) until `data.status` is `completed`, then read `data.result`. On a fan-out, check `meta.partial` and `meta.platformResults[]`.
+A live call that has to scrape returns `202` with `data.jobId`, `data.pollUrl` and
+`data.estimatedSeconds` (the `202` itself charges 0). Poll `GET /v1/jobs/{jobId}` (free)
+until `data.status` is TERMINAL — `completed` **or** `failed`.
+
+- **`completed`** → the payload is at `data.result` (the same schema the sync call returns;
+  `data` itself is just `{jobId, result, status}`). `meta` carries `partial`,
+  `platformResults[]` and `warnings[]`. A completed job may still return an **empty**
+  result (`data.result: []`) — the reason is in `meta.warnings[]` (e.g. `no_results`), and
+  empty results charge 0.
+- **`failed`** → HTTP is still **200**, not an HTTP error. The failure is nested at
+  `data.error` (`code`, `type`, `message`, `retryable`). Detect it with
+  `data.status === "failed"`, **not** a top-level `error`. `creditsCharged` is 0, and `meta`
+  carries only `{requestId, creditsCharged, platforms}` — do **not** read `partial`,
+  `platformResults` or `warnings` on a failed job.
+
+Pace your polling: honour the `Retry-After` header, back off between attempts, and cap the
+number of attempts. A tight loop hits `429 rate_limit_exceeded` (120 requests/minute).
+
+## Known limitations
+
+- **Pagination:** `limit`/`cursor` are accepted where documented, but availability depends on the endpoint and the upstream source — treat `meta.pagination` as authoritative and stop when `hasMore` is false or `nextCursor` is null.
+- **Externally-sourced ids:** a Vrbo id obtained somewhere other than `/v1/search` may not resolve upstream and can produce a failed job (`all_actors_failed`). Prefer ids from `/v1/search` (`platformListingId`).
+- **Platform gaps:** see the support matrix above — `google` has no listing or reviews endpoint.
 
 ## Credits
 

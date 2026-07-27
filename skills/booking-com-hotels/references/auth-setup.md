@@ -10,8 +10,15 @@ Figure out the correct way to persist an environment variable on this machine so
 
 ## Step 1 — get a key
 
-- **Evaluate with zero friction:** use a **sandbox** key (`stay_test_…`). Sandbox calls return deterministic fixtures and cost **0 credits** — perfect for wiring the skill up before signing up.
-- **Live data:** create a free account at <https://stayingapi.com/signup> (no card) and make a key in the dashboard. Live keys are `stay_live_…`.
+Both key types come from the same place — the dashboard:
+
+1. Create a free account at <https://stayingapi.com/signup> (no credit card).
+2. Open <https://stayingapi.com/dashboard/keys> and copy a key.
+
+- **Evaluate with zero friction:** use a **sandbox** key (`stay_test_…`). Sandbox calls return deterministic fixtures and cost **0 credits**. Sandbox keys work **immediately** — you do not need to verify your email first.
+- **Live data:** use a live key (`stay_live_…`). Verifying your email is what unlocks live calls and their credits.
+
+> Sandbox fixtures are illustrative, not a mirror of your request — they may echo different dates, occupancy or even a different property than you asked for. Use them to wire up parsing and error handling, then switch to a `stay_live_` key for real data.
 
 The same key works for these skills, the REST API, and the hosted MCP server (`https://mcp.stayingapi.com`).
 

@@ -25,7 +25,7 @@
     {
       "name": "booking-com-prices",
       "path": "skills/booking-com-prices",
-      "description": "Get a real Booking.com price quote for a listing and dates, and compare that property across booking platforms for the cheapest rate. Use for \"how much is this Booking.com place\" or \"is it cheaper elsewhere\". Powered by StayingAPI."
+      "description": "Get a real Booking.com price quote for a listing and dates, then compare that property against the offers StayingAPI can resolve for it to find the cheapest rate. Use for \"how much is this Booking.com place\" or \"is it cheaper elsewhere\". Powered by StayingAPI."
     },
     {
       "name": "booking-com-full",
