@@ -1,6 +1,6 @@
 ---
 name: booking-com-hotels
-description: "Search Booking.com hotels by location, dates and occupancy in one unified schema, with cross-OTA price comparison. Use for hotel discovery on Booking.com. Powered by StayingAPI."
+description: "Search Booking.com hotels by location, dates and occupancy in one unified schema, with cross-OTA price comparison. Use for hotel discovery on Booking.com. Powered by StayingAPI (stayingapi.com)."
 version: "1.0.0"
 license: MIT-0
 author: StayingAPI
@@ -11,10 +11,10 @@ compatibility: Requires internet access to reach api.stayingapi.com. No addition
 required_environment_variables:
   - name: STAYINGAPI_KEY
     prompt: Your StayingAPI key (starts with stay_)
-    help: Free key at https://stayingapi.com/signup — no card. A stay_test_ sandbox key returns fixtures at zero cost.
+    help: 300 free credits to start, no card. Sign up at https://stayingapi.com/signup. A stay_test_ sandbox key returns fixtures at zero cost.
     required_for: all API requests
-tags: ["booking-com", "hotels", "hotel-search", "price-comparison", "travel"]
-metadata: {"openclaw":{"emoji":"🏨","requires":{"env":["STAYINGAPI_KEY"]},"primaryEnv":"STAYINGAPI_KEY","homepage":"https://stayingapi.com"},"hermes":{"tags":["booking-com","hotels","hotel-search","price-comparison","travel"],"category":"integrations"}}
+tags: ["stayingapi", "booking-com", "hotels", "hotel-search", "price-comparison", "travel"]
+metadata: {"openclaw":{"emoji":"🏨","requires":{"env":["STAYINGAPI_KEY"]},"primaryEnv":"STAYINGAPI_KEY","homepage":"https://stayingapi.com"},"hermes":{"tags":["stayingapi","booking-com","hotels","hotel-search","price-comparison","travel"],"category":"integrations"}}
 ---
 
 # Booking.com Hotels
@@ -58,19 +58,19 @@ Key parameters:
 - `adults` — ≥ 1.
 - `children` — ≥ 0.
 - `childAges[]` — Length must equal children. Coarsened for Vrbo/Airbnb.
-- `platforms[]` — Drives fan-out + per-platform billing.
+- `platforms[]` — Drives fan-out + per-platform billing. Omit to query every enabled platform.
 
 ### `GET /v1/price-compare`
 
-Rate-shop one property in a single call, resolved through the Google Hotels backbone. The response carries the offers the backbone exposes for that property plus StayingAPI-computed min and median over those offers as first-class fields, so you can read the cheapest rate without re-deriving it. Coverage varies by property: some resolve to several OTA offers, others to a single aggregated-lowest offer (then offers has one entry, min equals median, and the entry may be a direct-supplier rate rather than an OTA). Read offers.length before presenting a result as a multi-platform comparison — the schema does not guarantee more than one.
+Rate-shop one property in a single call. TWO MODES, one response shape. GOOGLE MODE (name / location / googleHotelId) resolves the property through the Google Hotels backbone — you need no ids, but coverage varies: some properties resolve to several OTA offers, others to a single aggregated-lowest offer (then offers has one entry, min equals median, and the entry may be a direct-supplier rate rather than an OTA). Read offers.length before presenting a google-mode result as a multi-platform comparison — the schema does not guarantee more than one. DIRECT MODE (listings=) removes that uncertainty: you supply 2-6 platform:listingId pairs you already know are the same property, and we run a real price call on each one in parallel, so you get exactly the platforms you asked for, each a live quote for your dates and occupancy. Both modes carry StayingAPI-computed min and median as first-class fields.
 
 Key parameters:
-- `name` — Property name to resolve.
-- `googleHotelId` — Precise Google Hotels id.
-- `location` — Disambiguating place / "lat,lng".
+- `listings` — DIRECT MODE. 2-6 comma-separated (or repeated) platform:listingId pairs for the SAME property, e.g. airbnb:12345,booking:co/casa-de-alba. Split on the FIRST colon, so a full listing URL works as the id. Mutually exclusive with name / location / googleHotelId.
+- `name` — GOOGLE MODE. Property name to resolve.
+- `googleHotelId` — GOOGLE MODE. Precise Google Hotels id.
+- `location` — GOOGLE MODE. Disambiguating place / "lat,lng".
 - `checkIn` — **Required.** YYYY-MM-DD; not in the past.
 - `checkOut` — **Required.** Must be after checkIn.
-- `adults` — ≥ 1.
 
 
 > Filter results to Booking.com by passing `platforms=booking` to the search call.
@@ -129,7 +129,7 @@ number of attempts. A tight loop hits `429 rate_limit_exceeded` (120 requests/mi
 
 ## Credits
 
-Number-free by design — **failed, empty and blocked calls are never billed**, and `stay_test_` sandbox calls are always free. Current costs: <https://stayingapi.com/pricing> · full contract: <https://api.stayingapi.com/openapi.json>.
+Number-free by design: **failed, empty and blocked calls are never billed**, and `stay_test_` sandbox calls are always free. Current costs: <https://stayingapi.com/pricing> · full contract: <https://api.stayingapi.com/openapi.json>.
 
 ## Trademark
 
@@ -137,4 +137,4 @@ StayingAPI is an independent service and is not affiliated with, endorsed by, or
 
 ---
 
-**Get your free key → https://stayingapi.com/signup** · Docs: https://stayingapi.com/docs
+**300 free credits to start, no card: https://stayingapi.com/signup** · Docs: https://stayingapi.com/docs

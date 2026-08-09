@@ -46,7 +46,7 @@ cp -r booking-com-skills/skills/booking-com-full ~/.claude/skills/
 | [`booking-com-availability`](skills/booking-com-availability) | Booking.com Availability |
 | [`booking-com-reviews`](skills/booking-com-reviews) | Booking.com Reviews |
 | [`booking-com-prices`](skills/booking-com-prices) | Booking.com Prices & Cross-OTA Comparison |
-| [`booking-com-full`](skills/booking-com-full) | Booking.com — Complete Toolkit |
+| [`booking-com-full`](skills/booking-com-full) | Booking.com, Complete Toolkit |
 | [`booking-com-hotels`](skills/booking-com-hotels) | Booking.com Hotels |
 
 Install `booking-com-full` for broad coverage; install a focused skill when you want a minimal tool surface.

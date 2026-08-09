@@ -1,6 +1,6 @@
 ---
 name: booking-com-reviews
-description: "Read normalized Booking.com reviews for a listing, with native rating scales preserved. Use when a user wants ratings or guest feedback for a listing on Booking.com. Powered by StayingAPI."
+description: "Read normalized Booking.com reviews for a listing, with native rating scales preserved. Use when a user wants ratings or guest feedback for a listing on Booking.com. Powered by StayingAPI (stayingapi.com)."
 version: "1.0.0"
 license: MIT-0
 author: StayingAPI
@@ -11,10 +11,10 @@ compatibility: Requires internet access to reach api.stayingapi.com. No addition
 required_environment_variables:
   - name: STAYINGAPI_KEY
     prompt: Your StayingAPI key (starts with stay_)
-    help: Free key at https://stayingapi.com/signup — no card. A stay_test_ sandbox key returns fixtures at zero cost.
+    help: 300 free credits to start, no card. Sign up at https://stayingapi.com/signup. A stay_test_ sandbox key returns fixtures at zero cost.
     required_for: all API requests
-tags: ["booking-com", "booking-com-api", "reviews", "ratings", "travel", "accommodation"]
-metadata: {"openclaw":{"emoji":"⭐","requires":{"env":["STAYINGAPI_KEY"]},"primaryEnv":"STAYINGAPI_KEY","homepage":"https://stayingapi.com"},"hermes":{"tags":["booking-com","booking-com-api","reviews","ratings","travel","accommodation"],"category":"integrations"}}
+tags: ["stayingapi", "booking-com", "booking-com-api", "reviews", "ratings", "travel", "accommodation"]
+metadata: {"openclaw":{"emoji":"⭐","requires":{"env":["STAYINGAPI_KEY"]},"primaryEnv":"STAYINGAPI_KEY","homepage":"https://stayingapi.com"},"hermes":{"tags":["stayingapi","booking-com","booking-com-api","reviews","ratings","travel","accommodation"],"category":"integrations"}}
 ---
 
 # Booking.com Reviews
@@ -49,11 +49,11 @@ Base URL: `https://api.stayingapi.com/v1`.
 
 ### `GET /v1/reviews`
 
-Normalized, paginated reviews for one listing on one platform. Native rating scales are preserved and echoed alongside each rating (TripAdvisor/Airbnb/Vrbo use 5; Booking.com/Expedia/Hotels.com use 10) — never silently rescaled.
+Normalized, paginated reviews for one listing on one platform. Required params are platform plus either listingId or url. listingId should be the platform-native id from /v1/search platformListingId; a stays_<platform>_<platformListingId> object id is accepted, normalized, and may supply platform when platform is omitted. Native rating scales are preserved and echoed alongside each rating (TripAdvisor/Airbnb/Vrbo use 5; Booking.com/Expedia/Hotels.com use 10) — never silently rescaled.
 
 Key parameters:
 - `platform` — **Required.** vrbo | booking | airbnb. Note google is NOT enabled for reviews (400 platform_not_enabled). Use the API value, not the brand name — "booking", not "booking-com".
-- `listingId` — Listing id on platform.
+- `listingId` — Platform-native id from /v1/search platformListingId. A stays_<platform>_<platformListingId> id is accepted, normalized, and may supply platform when platform is omitted.
 - `url` — Full listing URL.
 - `limit` — 1–100.
 - `cursor` — Opaque base64 cursor.
@@ -114,7 +114,7 @@ number of attempts. A tight loop hits `429 rate_limit_exceeded` (120 requests/mi
 
 ## Credits
 
-Number-free by design — **failed, empty and blocked calls are never billed**, and `stay_test_` sandbox calls are always free. Current costs: <https://stayingapi.com/pricing> · full contract: <https://api.stayingapi.com/openapi.json>.
+Number-free by design: **failed, empty and blocked calls are never billed**, and `stay_test_` sandbox calls are always free. Current costs: <https://stayingapi.com/pricing> · full contract: <https://api.stayingapi.com/openapi.json>.
 
 ## Trademark
 
@@ -122,4 +122,4 @@ StayingAPI is an independent service and is not affiliated with, endorsed by, or
 
 ---
 
-**Get your free key → https://stayingapi.com/signup** · Docs: https://stayingapi.com/docs
+**300 free credits to start, no card: https://stayingapi.com/signup** · Docs: https://stayingapi.com/docs

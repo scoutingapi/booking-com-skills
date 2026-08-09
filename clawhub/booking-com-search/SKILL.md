@@ -1,6 +1,6 @@
 ---
 name: booking-com-search
-description: "Search live Booking.com stays by location, dates and occupancy, returned in one unified schema alongside every other booking platform. Use when a user wants to find Booking.com listings. Powered by the StayingAPI REST API / MCP server."
+description: "Search live Booking.com stays by location, dates and occupancy, returned in one unified schema alongside every other booking platform. Use when a user wants to find Booking.com listings. Powered by StayingAPI (stayingapi.com), REST API and MCP server."
 version: "1.0.0"
 license: MIT-0
 author: StayingAPI
@@ -11,10 +11,10 @@ compatibility: Requires internet access to reach api.stayingapi.com. No addition
 required_environment_variables:
   - name: STAYINGAPI_KEY
     prompt: Your StayingAPI key (starts with stay_)
-    help: Free key at https://stayingapi.com/signup — no card. A stay_test_ sandbox key returns fixtures at zero cost.
+    help: 300 free credits to start, no card. Sign up at https://stayingapi.com/signup. A stay_test_ sandbox key returns fixtures at zero cost.
     required_for: all API requests
-tags: ["booking-com", "booking-com-api", "search", "vacation-rental", "travel", "accommodation"]
-metadata: {"openclaw":{"emoji":"🔍","requires":{"env":["STAYINGAPI_KEY"]},"primaryEnv":"STAYINGAPI_KEY","homepage":"https://stayingapi.com"},"hermes":{"tags":["booking-com","booking-com-api","search","vacation-rental","travel","accommodation"],"category":"integrations"}}
+tags: ["stayingapi", "booking-com", "booking-com-api", "search", "vacation-rental", "travel", "accommodation"]
+metadata: {"openclaw":{"emoji":"🔍","requires":{"env":["STAYINGAPI_KEY"]},"primaryEnv":"STAYINGAPI_KEY","homepage":"https://stayingapi.com"},"hermes":{"tags":["stayingapi","booking-com","booking-com-api","search","vacation-rental","travel","accommodation"],"category":"integrations"}}
 ---
 
 # Booking.com Search
@@ -59,7 +59,7 @@ Key parameters:
 - `adults` — ≥ 1.
 - `children` — ≥ 0.
 - `childAges[]` — Length must equal children. Coarsened for Vrbo/Airbnb.
-- `platforms[]` — Drives fan-out + per-platform billing.
+- `platforms[]` — Drives fan-out + per-platform billing. Omit to query every enabled platform.
 
 
 > Filter results to Booking.com by passing `platforms=booking` to the search call.
@@ -118,7 +118,7 @@ number of attempts. A tight loop hits `429 rate_limit_exceeded` (120 requests/mi
 
 ## Credits
 
-Number-free by design — **failed, empty and blocked calls are never billed**, and `stay_test_` sandbox calls are always free. Current costs: <https://stayingapi.com/pricing> · full contract: <https://api.stayingapi.com/openapi.json>.
+Number-free by design: **failed, empty and blocked calls are never billed**, and `stay_test_` sandbox calls are always free. Current costs: <https://stayingapi.com/pricing> · full contract: <https://api.stayingapi.com/openapi.json>.
 
 ## Trademark
 
@@ -126,4 +126,4 @@ StayingAPI is an independent service and is not affiliated with, endorsed by, or
 
 ---
 
-**Get your free key → https://stayingapi.com/signup** · Docs: https://stayingapi.com/docs
+**300 free credits to start, no card: https://stayingapi.com/signup** · Docs: https://stayingapi.com/docs

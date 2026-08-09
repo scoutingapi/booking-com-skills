@@ -1,6 +1,6 @@
 ---
 name: booking-com-availability
-description: "Check day-by-day Booking.com availability (the booking calendar) for a known listing over a date window. Use when a user asks whether a listing on Booking.com is open on specific dates. Powered by StayingAPI."
+description: "Check day-by-day Booking.com availability (the booking calendar) for a known listing over a date window. Use when a user asks whether a listing on Booking.com is open on specific dates. Powered by StayingAPI (stayingapi.com)."
 version: "1.0.0"
 license: MIT-0
 author: StayingAPI
@@ -11,10 +11,10 @@ compatibility: Requires internet access to reach api.stayingapi.com. No addition
 required_environment_variables:
   - name: STAYINGAPI_KEY
     prompt: Your StayingAPI key (starts with stay_)
-    help: Free key at https://stayingapi.com/signup — no card. A stay_test_ sandbox key returns fixtures at zero cost.
+    help: 300 free credits to start, no card. Sign up at https://stayingapi.com/signup. A stay_test_ sandbox key returns fixtures at zero cost.
     required_for: all API requests
-tags: ["booking-com", "booking-com-api", "availability", "calendar", "travel", "accommodation"]
-metadata: {"openclaw":{"emoji":"📅","requires":{"env":["STAYINGAPI_KEY"]},"primaryEnv":"STAYINGAPI_KEY","homepage":"https://stayingapi.com"},"hermes":{"tags":["booking-com","booking-com-api","availability","calendar","travel","accommodation"],"category":"integrations"}}
+tags: ["stayingapi", "booking-com", "booking-com-api", "availability", "calendar", "travel", "accommodation"]
+metadata: {"openclaw":{"emoji":"📅","requires":{"env":["STAYINGAPI_KEY"]},"primaryEnv":"STAYINGAPI_KEY","homepage":"https://stayingapi.com"},"hermes":{"tags":["stayingapi","booking-com","booking-com-api","availability","calendar","travel","accommodation"],"category":"integrations"}}
 ---
 
 # Booking.com Availability
@@ -115,7 +115,7 @@ number of attempts. A tight loop hits `429 rate_limit_exceeded` (120 requests/mi
 
 ## Credits
 
-Number-free by design — **failed, empty and blocked calls are never billed**, and `stay_test_` sandbox calls are always free. Current costs: <https://stayingapi.com/pricing> · full contract: <https://api.stayingapi.com/openapi.json>.
+Number-free by design: **failed, empty and blocked calls are never billed**, and `stay_test_` sandbox calls are always free. Current costs: <https://stayingapi.com/pricing> · full contract: <https://api.stayingapi.com/openapi.json>.
 
 ## Trademark
 
@@ -123,4 +123,4 @@ StayingAPI is an independent service and is not affiliated with, endorsed by, or
 
 ---
 
-**Get your free key → https://stayingapi.com/signup** · Docs: https://stayingapi.com/docs
+**300 free credits to start, no card: https://stayingapi.com/signup** · Docs: https://stayingapi.com/docs

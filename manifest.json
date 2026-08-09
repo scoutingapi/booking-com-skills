@@ -10,32 +10,32 @@
     {
       "name": "booking-com-search",
       "path": "skills/booking-com-search",
-      "description": "Search live Booking.com stays by location, dates and occupancy, returned in one unified schema alongside every other booking platform. Use when a user wants to find Booking.com listings. Powered by the StayingAPI REST API / MCP server."
+      "description": "Search live Booking.com stays by location, dates and occupancy, returned in one unified schema alongside every other booking platform. Use when a user wants to find Booking.com listings. Powered by StayingAPI (stayingapi.com), REST API and MCP server."
     },
     {
       "name": "booking-com-availability",
       "path": "skills/booking-com-availability",
-      "description": "Check day-by-day Booking.com availability (the booking calendar) for a known listing over a date window. Use when a user asks whether a listing on Booking.com is open on specific dates. Powered by StayingAPI."
+      "description": "Check day-by-day Booking.com availability (the booking calendar) for a known listing over a date window. Use when a user asks whether a listing on Booking.com is open on specific dates. Powered by StayingAPI (stayingapi.com)."
     },
     {
       "name": "booking-com-reviews",
       "path": "skills/booking-com-reviews",
-      "description": "Read normalized Booking.com reviews for a listing, with native rating scales preserved. Use when a user wants ratings or guest feedback for a listing on Booking.com. Powered by StayingAPI."
+      "description": "Read normalized Booking.com reviews for a listing, with native rating scales preserved. Use when a user wants ratings or guest feedback for a listing on Booking.com. Powered by StayingAPI (stayingapi.com)."
     },
     {
       "name": "booking-com-prices",
       "path": "skills/booking-com-prices",
-      "description": "Get a real Booking.com price quote for a listing and dates, then compare that property against the offers StayingAPI can resolve for it to find the cheapest rate. Use for \"how much is this Booking.com place\" or \"is it cheaper elsewhere\". Powered by StayingAPI."
+      "description": "Get a real Booking.com price quote for a listing and dates, then compare that property against the offers StayingAPI can resolve for it to find the cheapest rate. Use for \"how much is this Booking.com place\" or \"is it cheaper elsewhere\". Powered by StayingAPI (stayingapi.com)."
     },
     {
       "name": "booking-com-full",
       "path": "skills/booking-com-full",
-      "description": "Complete Booking.com toolkit — search, availability, listing detail, price, cross-OTA price comparison and reviews, all in one unified schema. Install this when an agent needs broad Booking.com coverage. Powered by StayingAPI."
+      "description": "Complete Booking.com toolkit: search, availability, listing detail, price, cross-OTA price comparison and reviews, all in one unified schema. Install this when an agent needs broad Booking.com coverage. Powered by StayingAPI (stayingapi.com)."
     },
     {
       "name": "booking-com-hotels",
       "path": "skills/booking-com-hotels",
-      "description": "Search Booking.com hotels by location, dates and occupancy in one unified schema, with cross-OTA price comparison. Use for hotel discovery on Booking.com. Powered by StayingAPI."
+      "description": "Search Booking.com hotels by location, dates and occupancy in one unified schema, with cross-OTA price comparison. Use for hotel discovery on Booking.com. Powered by StayingAPI (stayingapi.com)."
     }
   ]
 }
